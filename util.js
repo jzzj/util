@@ -140,7 +140,7 @@
 			var store = {
 				name: 'fakeLocalStorage',
 				options: {
-					//domain: "wecash.net",
+					//domain: domain.com",
 					path: "/",
 					expires: 365
 				},
