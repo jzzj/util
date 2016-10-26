@@ -586,16 +586,18 @@
 			var param_cache = {},
 				href = location.href;
 			
-			return function(name, reget){
-				if(reget!==true && typeof(param_cache[name])!=='undefined'){
-					return param_cache[name];
+			return function(name, refresh){
+				if(refresh === true){
+				  href = location.href;
+				}else if(typeof(param_cache[name])!=='undefined'){
+				  return param_cache[name];
 				}
-				var ret = href.match(new RegExp(name+'=(.*?)(?:\&|$)'));
+				var ret = href.match(new RegExp(name+'=(.*?)(?:\&|#|$)'));
 				ret = ret ? ret[1] : ret;
 				param_cache[name] = ret;
 				if(!ret)return ret;
 				return decodeURIComponent(ret);
-			}
+			 }
 		})(),
 		domReady: (function(){
 			var readyList;
